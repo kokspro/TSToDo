@@ -11,7 +11,7 @@ function createTask(): void {
 }
 
 function keyPress(e: KeyboardEvent) {
-    if ( e.key === "Enter") {
+    if ( e.key === "Enter" ) {
         e.preventDefault();
         addBtn.click();
     }
@@ -20,6 +20,10 @@ function keyPress(e: KeyboardEvent) {
 class Task {
     constructor(public task: string) {}
     createLi(): void {
+        if ( this.task.length < 1 || this.task.charAt(0) === ' ') {
+            input.value = '';
+            return;
+        }
         const li = document.createElement('li');
         li.innerHTML = this.task;
         li.addEventListener('click', () => {li.classList.toggle('done')});

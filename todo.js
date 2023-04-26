@@ -19,6 +19,10 @@ class Task {
         this.task = task;
     }
     createLi() {
+        if (this.task.length < 1 || this.task.charAt(0) === ' ') {
+            input.value = '';
+            return;
+        }
         const li = document.createElement('li');
         li.innerHTML = this.task;
         li.addEventListener('click', () => { li.classList.toggle('done'); });
