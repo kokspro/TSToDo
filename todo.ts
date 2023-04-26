@@ -24,6 +24,7 @@ class Task {
             input.value = '';
             return;
         }
+        
         const li = document.createElement('li');
         li.innerHTML = this.task;
         li.addEventListener('click', () => {li.classList.toggle('done')});
