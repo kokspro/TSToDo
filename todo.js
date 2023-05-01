@@ -19,6 +19,7 @@ function createTask() {
     };
     createLi(newTask);
     tasks.push(newTask);
+    saveTasks();
 }
 function keyPress(e) {
     if (e.key === "Enter") {
@@ -46,15 +47,13 @@ function createLi(task) {
     removeBtn.innerHTML = 'Remove';
     removeBtn.addEventListener('click', () => {
         li.remove();
-        let index = tasks.indexOf(task);
-        tasks.splice(index, 1);
+        tasks.splice(tasks.indexOf(task), 1);
         saveTasks();
     });
     li.append(removeBtn);
     if (task.checked) {
         li.classList.add('checked');
     }
-    saveTasks();
 }
 function saveTasks() {
     localStorage.setItem('TASKLIST', JSON.stringify(tasks));

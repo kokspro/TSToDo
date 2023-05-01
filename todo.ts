@@ -28,10 +28,10 @@ function createTask() {
 
     createLi(newTask);
     tasks.push(newTask);
+    saveTasks();
 }
 
-
-function keyPress(e: KeyboardEvent) {
+function keyPress(e: KeyboardEvent): void {
     if ( e.key === "Enter" ) {
         e.preventDefault();
         addBtn.click();
@@ -59,8 +59,7 @@ function createLi(task: Task): void {
     removeBtn.innerHTML = 'Remove';
     removeBtn.addEventListener('click', () => {
         li.remove();
-        let index = tasks.indexOf(task)
-        tasks.splice(index, 1);
+        tasks.splice(tasks.indexOf(task), 1);
         saveTasks();
     });
     li.append(removeBtn); 
@@ -68,8 +67,6 @@ function createLi(task: Task): void {
     if (task.checked) {
         li.classList.add('checked');
     }
-
-    saveTasks();
 }
 
 function saveTasks(): void {
@@ -85,3 +82,4 @@ function clearStorage(): void {
     localStorage.clear();
     location.reload();
 }
+
