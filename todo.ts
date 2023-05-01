@@ -1,14 +1,37 @@
 const input = document.getElementById('input') as HTMLInputElement;
 const addBtn = document.getElementById('addBtn') as HTMLButtonElement;
+const clearBtn = document.getElementById('clearBtn') as HTMLButtonElement;
 const ul = document.getElementById('ul') as HTMLUListElement;
 
 addBtn.addEventListener('click', createTask);
+clearBtn.addEventListener('click', clearStorage);
 input.addEventListener('keypress', keyPress);
 
-function createTask(): void {
-    let task = new Task(input.value);
-    task.createLi();
+type Task = {
+    title: string
+    id: Date
+    checked: boolean
 }
+
+const tasks: Task[] = loadTasks();
+tasks.forEach(createLi);
+
+function createTask() {
+    if (input.value.charAt(0) === ' ' || input.value.length < 1) {
+        input.value = '';
+        return;
+    }
+
+    const newTask: Task = {
+        title: input.value,
+        id: new Date(),
+        checked: false
+    }
+
+    createLi(newTask);
+    tasks.push(newTask);
+}
+
 
 function keyPress(e: KeyboardEvent) {
     if ( e.key === "Enter" ) {
@@ -17,23 +40,50 @@ function keyPress(e: KeyboardEvent) {
     }
 }
 
-class Task {
-    constructor(public task: string) {}
-    createLi(): void {
-        if ( this.task.length < 1 || this.task.charAt(0) === ' ') {
-            input.value = '';
-            return;
+function createLi(task: Task): void {
+    const li = document.createElement('li');
+    li.innerHTML = task.title;
+    li.addEventListener('click', () => {
+        if (task.checked) {
+            task.checked = false;
+            li.classList.remove('checked');
         }
-        
-        const li = document.createElement('li');
-        li.innerHTML = this.task;
-        li.addEventListener('click', () => {li.classList.toggle('done')});
-        ul.append(li);
-        input.value = '';
+        else {
+            task.checked = true;
+            li.classList.add('checked');
+        }
+        saveTasks();
+    });
+    ul.append(li);
+    input.value = '';
 
-        const removeBtn = document.createElement('button');
-        removeBtn.innerHTML = 'Remove';
-        removeBtn.addEventListener('click', () => {li.remove()});
-        li.append(removeBtn);    
+    const removeBtn = document.createElement('button');
+    removeBtn.innerHTML = 'Remove';
+    removeBtn.addEventListener('click', () => {
+        li.remove();
+        let index = tasks.indexOf(task)
+        tasks.splice(index, 1);
+        saveTasks();
+    });
+    li.append(removeBtn); 
+
+    if (task.checked) {
+        li.classList.add('checked');
     }
+
+    saveTasks();
+}
+
+function saveTasks(): void {
+    localStorage.setItem('TASKLIST', JSON.stringify(tasks));
+}
+
+function loadTasks(): Task[] {
+    const tasksJSON = localStorage.getItem('TASKLIST');
+    return tasksJSON === null ? [] : JSON.parse(tasksJSON);
+}
+
+function clearStorage(): void {
+    localStorage.clear();
+    location.reload();
 }
