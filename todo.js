@@ -15,7 +15,6 @@ function createTask() {
     }
     const newTask = {
         title: input.value,
-        id: new Date(),
         checked: false
     };
     createLi(newTask);

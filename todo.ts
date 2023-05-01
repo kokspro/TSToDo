@@ -9,7 +9,6 @@ input.addEventListener('keypress', keyPress);
 
 type Task = {
     title: string
-    id: Date
     checked: boolean
 }
 
@@ -24,7 +23,6 @@ function createTask() {
 
     const newTask: Task = {
         title: input.value,
-        id: new Date(),
         checked: false
     }
 
