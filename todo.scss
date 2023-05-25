@@ -1,0 +1,28 @@
+$primaryColor: #E55803;
+$secondaryColor: #1aa7fc;
+$backgroundColor: #555555;
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: $primaryColor;
+    background: $backgroundColor;
+}
+
+header {
+    font-size: 3rem;
+}
+
+input {
+    background-color: $backgroundColor;
+    color: $primaryColor;
+
+    &::placeholder {
+        color: $primaryColor;
+    }
+}
+

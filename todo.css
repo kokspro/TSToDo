@@ -1,0 +1,22 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #E55803;
+  background: #555555;
+}
+
+header {
+  font-size: 3rem;
+}
+
+input {
+  background-color: #555555;
+  color: #E55803;
+}
+input::placeholder {
+  color: #E55803;
+}/*# sourceMappingURL=todo.css.map */
