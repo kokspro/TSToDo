@@ -86,3 +86,13 @@ button {
     font-size: 100%;
   }
 }
+@media screen and (width > 900px) {
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: clamp(400px, 90vw, 1600px);
+  }
+  li {
+    align-self: start;
+  }
+}

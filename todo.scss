@@ -95,3 +95,13 @@ button {
     }
 }
 
+@media screen and (width > 900px) {
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: clamp(400px, 90vw);
+    }
+    li {
+        align-self: start;
+    }
+}
