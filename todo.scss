@@ -8,21 +8,86 @@ $backgroundColor: #555555;
     padding: 0;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     color: $primaryColor;
-    background: $backgroundColor;
+    background: darken($backgroundColor, 10%);
+    align-items: center;
 }
 
 header {
-    font-size: 3rem;
+    font-size: 3.2rem;
+    margin: .5rem;
+}
+
+form {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 input {
     background-color: $backgroundColor;
     color: $primaryColor;
+    padding: .5rem;
+    outline: none;
+    border-color: $primaryColor;
 
     &::placeholder {
         color: $primaryColor;
     }
+
+    &:focus {
+        color: $secondaryColor;
+        background-color: darken($backgroundColor, 20%);
+        border-color: $secondaryColor;
+        box-shadow: 0px 0px 15px $secondaryColor;
+        
+        &::placeholder {
+            color: $secondaryColor;
+        }
+    }
 }
+
+ul {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin: 1rem 1.5rem
+}
+
+li {
+    display: flex;
+    list-style-type: none;
+    margin: .3rem;
+    justify-content: space-between;
+    font-size: 2rem;
+    background-color: $backgroundColor;
+    padding: 0 1rem;
+}
+
+button {
+    color: $primaryColor;
+    border: none;
+    border-radius: 50%;
+    padding: .2rem;
+    background-color: $backgroundColor;
+    font-size: 1.5rem;
+}
+
+.checked {
+    color: $secondaryColor;
+    background-color: darken($backgroundColor, 20%);
+
+    &>button {
+        color: $secondaryColor;
+        background-color: darken($backgroundColor, 20%);
+    }
+}
+
+
 

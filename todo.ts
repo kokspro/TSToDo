@@ -16,6 +16,8 @@ const tasks: Task[] = loadTasks();
 tasks.forEach(createLi);
 
 function createTask() {
+    addBtn.blur();
+
     if (input.value.charAt(0) === ' ' || input.value.length < 1) {
         input.value = '';
         return;
@@ -56,7 +58,7 @@ function createLi(task: Task): void {
     input.value = '';
 
     const removeBtn = document.createElement('button');
-    removeBtn.innerHTML = 'Remove';
+    removeBtn.innerHTML = 'X';
     removeBtn.addEventListener('click', () => {
         li.remove();
         tasks.splice(tasks.indexOf(task), 1);
