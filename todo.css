@@ -17,8 +17,9 @@ body {
 }
 
 header {
-  font-size: 3rem;
-  margin: 0.5rem;
+  font-size: 2rem;
+  margin: 1rem 0.5rem;
+  text-align: center;
 }
 
 input {
@@ -91,6 +92,9 @@ button {
   html {
     font-size: 100%;
   }
+  header {
+    font-size: 3rem;
+  }
 }
 @media screen and (width > 900px) {
   ul {
@@ -102,4 +106,4 @@ button {
   li {
     align-self: start;
   }
-}
+}/*# sourceMappingURL=todo.css.map */

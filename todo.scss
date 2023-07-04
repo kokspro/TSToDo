@@ -31,8 +31,9 @@ body {
 }
 
 header {
-    font-size: 3rem;
-    margin: .5rem;
+    font-size: 2rem;
+    margin: 1rem .5rem;
+    text-align: center;
 }
 
 input {
@@ -103,6 +104,9 @@ button {
 @media screen and (width > 600px) {
     html {
         font-size: 100%;
+    }
+    header {
+        font-size: 3rem;
     }
 }
 
